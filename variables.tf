@@ -49,16 +49,16 @@ variable "private_subnets" {
 }
 
 # eks
-variable "spot_instance_types" {
-  description = "The EC2 types (sizes) to use for the spot instances."
+variable "instance_types" {
+  description = "The EC2 types (sizes) to use for the instances."
   type        = list(string)
   default     = ["t3.medium", "t3.small"]
 }
 
-variable "asg_min_size" {
-  description = "Minimum size for node pool auto-scaling group."
+variable "asg_max_size" {
+  description = "Maximum size for node pool auto-scaling group."
   type        = number
-  default     = 2
+  default     = 5
 }
 
 variable "asg_desired_capacity" {
@@ -67,9 +67,9 @@ variable "asg_desired_capacity" {
   default     = 2
 }
 
-variable "asg_max_size" {
-  description = "Maximum size for node pool auto-scaling group."
+variable "asg_min_size" {
+  description = "Minimum size for node pool auto-scaling group."
   type        = number
-  default     = 5
+  default     = 2
 }
 

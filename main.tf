@@ -13,6 +13,8 @@ module "vpc" {
   #enable_dns_hostnames = true
   #enable_dns_support   = true
 
+  public_subnet_tags  = { "kubernetes.io/cluster/${var.project_name}" = "shared" }
+  private_subnet_tags = { "kubernetes.io/cluster/${var.project_name}" = "shared" }
   tags = {
     "Env"   = var.env_name
     "Owner" = var.owner
@@ -24,20 +26,20 @@ module "eks" {
 
   cluster_name     = var.project_name
   cluster_version  = "1.18"
+  write_kubeconfig = false
   subnets          = module.vpc.private_subnets
   vpc_id           = module.vpc.vpc_id
-  write_kubeconfig = false
 
   worker_groups_launch_template = [
     {
       name                    = "spot-pool"
-      override_instance_types = var.spot_instance_types
-      spot_instance_pools     = length(var.spot_instance_types)
-      asg_max_size            = var.asg_min_size
-      asg_desired_capacity    = var.asg_desired_capacity
-      asg_max_size            = var.asg_max_size
+      #public_ip               = true
+      override_instance_types = var.instance_types
+      spot_instance_pools     = length(var.instance_types)
       kubelet_extra_args      = "--node-labels=node.kubernetes.io/lifecycle=spot"
-      public_ip               = true
+      asg_max_size            = var.asg_max_size
+      asg_desired_capacity    = var.asg_desired_capacity
+      asg_min_size            = var.asg_min_size
     }
   ]
 
