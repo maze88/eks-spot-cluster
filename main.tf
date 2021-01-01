@@ -33,7 +33,7 @@ module "eks" {
   worker_groups_launch_template = [
     {
       name                    = "spot-pool"
-      #public_ip               = true
+      public_ip               = true
       override_instance_types = var.instance_types
       spot_instance_pools     = length(var.instance_types)
       kubelet_extra_args      = "--node-labels=node.kubernetes.io/lifecycle=spot"
@@ -48,4 +48,3 @@ module "eks" {
     "Owner" = var.owner
   }
 }
-
