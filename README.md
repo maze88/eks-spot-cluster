@@ -1,4 +1,2 @@
-# Terraform module based EKS cluster
+# EKS cluster using spot-instances and Terraform modules
 
-## Connect
-- `aws eks update-kubeconfig --region eu-west-2 --name mz-demo --alias mz-demo`

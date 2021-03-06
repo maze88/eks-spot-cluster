@@ -10,14 +10,12 @@ module "vpc" {
   azs                  = data.aws_availability_zones.available.names
   public_subnets       = var.public_subnets
   private_subnets      = var.private_subnets
-  #enable_dns_hostnames = true
+  enable_dns_hostnames = true
   #enable_dns_support   = true
 
   public_subnet_tags  = { "kubernetes.io/cluster/${var.project_name}" = "shared" }
-  private_subnet_tags = { "kubernetes.io/cluster/${var.project_name}" = "shared" }
   tags = {
     "Env"   = var.env_name
-    "Owner" = var.owner
   }
 }
 
@@ -25,9 +23,10 @@ module "eks" {
   source = "terraform-aws-modules/eks/aws"
 
   cluster_name     = var.project_name
-  cluster_version  = "1.18"
-  write_kubeconfig = false
-  subnets          = module.vpc.private_subnets
+  cluster_version  = var.k8s_version
+  write_kubeconfig = true
+  config_output_path = "${var.project_name}.kubeconfig"
+  subnets          = module.vpc.public_subnets
   vpc_id           = module.vpc.vpc_id
 
   worker_groups_launch_template = [
@@ -45,6 +44,5 @@ module "eks" {
 
   tags = {
     "Env"   = var.env_name
-    "Owner" = var.owner
   }
 }

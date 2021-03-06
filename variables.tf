@@ -14,19 +14,13 @@ variable "region" {
 variable "project_name" {
   description = "The name of the project."
   type        = string
-  default     = "mz-demo"
-}
-
-variable "owner" {
-  description = "The name of the owner of the project."
-  type        = string
-  default     = ""
+  default     = "demo"
 }
 
 variable "env_name" {
   description = "The name of the environment."
   type        = string
-  default     = "test"
+  default     = "demo"
 }
 
 # vpc
@@ -49,6 +43,12 @@ variable "private_subnets" {
 }
 
 # eks
+variable "k8s_version" {
+  description = "The version of Kubernetes to use."
+  type        = string
+  default     = "1.18"
+}
+
 variable "instance_types" {
   description = "The EC2 types (sizes) to use for the instances."
   type        = list(string)

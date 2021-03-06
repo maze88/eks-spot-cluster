@@ -1,3 +1,8 @@
+output "availability_zones" {
+  description = "The availability zones used in the VPC."
+  value       = module.vpc.azs
+}
+
 output "vpc_id" {
   description = "The ID of the VPC"
   value       = module.vpc.vpc_id
@@ -6,11 +11,6 @@ output "vpc_id" {
 output "vpc_cidr_block" {
   description = "The CIDR block of the VPC"
   value       = module.vpc.vpc_cidr_block
-}
-
-output "availability_zones" {
-  description = "The availability zones used in the VPC."
-  value       = module.vpc.azs
 }
 
 output "public_subnet_cidr_blocks" {
@@ -33,3 +33,7 @@ output "private_subnet_ids" {
   value       = module.vpc.private_subnets
 }
 
+output "kubeconfig_filename" {
+  description = "The filename of the generated kubectl config."
+  value       = module.eks.kubeconfig_filename
+}
