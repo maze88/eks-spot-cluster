@@ -2,4 +2,4 @@
 *.tfstate*
 *.tfvars
 *.swp
-kubeconfig*
+*kubeconfig*
