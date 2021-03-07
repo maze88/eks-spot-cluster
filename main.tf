@@ -15,19 +15,19 @@ module "vpc" {
 
   public_subnet_tags  = { "kubernetes.io/cluster/${var.project_name}" = "shared" }
   tags = {
-    "Env"   = var.env_name
+    "Env" = var.env_name
   }
 }
 
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
 
-  cluster_name     = var.project_name
-  cluster_version  = var.k8s_version
-  write_kubeconfig = true
+  cluster_name       = var.project_name
+  cluster_version    = var.k8s_version
+  write_kubeconfig   = true
   config_output_path = "${var.project_name}.kubeconfig"
-  subnets          = module.vpc.public_subnets
-  vpc_id           = module.vpc.vpc_id
+  subnets            = module.vpc.public_subnets
+  vpc_id             = module.vpc.vpc_id
 
   worker_groups_launch_template = [
     {
@@ -43,6 +43,6 @@ module "eks" {
   ]
 
   tags = {
-    "Env"   = var.env_name
+    "Env" = var.env_name
   }
 }
