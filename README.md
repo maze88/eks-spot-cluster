@@ -2,7 +2,7 @@
 
 ## Configuration
 - Normal terraform variables can be modified in `variables.tf`.
-- Default backend configuration is to an S3 bucket, please edit it (bucket name & region) in `backend.tf`. Or comment it out to store state locally.
+- Default backend configuration is to an S3 bucket, please edit it (bucket name & region) in `backend.tf`, or comment it out to store state locally.
 
 ## OIDC
 This branch has an OpenID Connect provider resource for the cluster. This allows association between IAM Roles and Kubernetes ServiceAccounts, enabling pod-specific privileges on cloud services and resources.
