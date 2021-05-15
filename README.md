@@ -2,4 +2,4 @@
 
 ## Configuration
 - Normal terraform variables can be modified in `variables.tf`.
-- Default backend configuration is to an S3 bucket, please edit it (bucket name & region) in `backend.tf`, or comment it out to store state locally.
+- Backend configuration (see `backend.tf`) is commented out, so will default to storing terraform state locally. To use an S3 bucket, one can uncomment it
