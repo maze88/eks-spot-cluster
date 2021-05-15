@@ -5,7 +5,7 @@
 - Backend configuration (see `backend.tf`) is commented out, so will default to storing terraform state locally. To use an S3 bucket, one can uncomment it.
 
 ## OIDC
-This branch has an OpenID Connect provider resource for the cluster. This allows association between IAM Roles and Kubernetes ServiceAccounts, enabling pod-specific privileges on cloud services and resources.
+This branch also has an OpenID Connect provider resource for the cluster. This allows association between IAM Roles and Kubernetes ServiceAccounts, enabling pod-specific privileges on cloud services and resources.
 
 ## Caveats
 In case of encountering issue with `terrafor destroy`, you may have to manually remove the OIDC provider from IAM and/or from Terraform (`terraform state rm aws_iam_openid_connect_provider.cluster`).
