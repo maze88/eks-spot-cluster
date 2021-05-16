@@ -4,8 +4,9 @@
 - Normal terraform variables can be modified in `variables.tf`.
 - Backend configuration (see `backend.tf`) is commented out, so will default to storing terraform state locally. To use an S3 bucket, one can uncomment it.
 
-## OIDC
-This branch also has an OpenID Connect provider resource for the cluster. This allows association between IAM Roles and Kubernetes ServiceAccounts, enabling pod-specific privileges on cloud services and resources.
+## IaC Resources
+- `vpc.tf`: creates the network infrastructure (VPC, Subnets, IGW, Route Tables...) using the terraform AWS VPC module.
+- `eks.tf`: creates the Kubernetes cluster using the terraform AWS EKS module. This branch also has an OpenID Connect provider resource for the cluster, which allows association between IAM Roles and Kubernetes ServiceAccounts, enabling pod-specific permissions for AWS resources.
 
 ## Caveats
 In case of encountering issue with `terrafor destroy`, you may have to manually remove the OIDC provider from IAM and/or from Terraform (`terraform state rm aws_iam_openid_connect_provider.cluster`).
