@@ -14,7 +14,7 @@ variable "region" {
 variable "project_name" {
   description = "The name of the project, will be used in resource naming."
   type        = string
-  default     = "mz-demo"
+  default     = "demo"
 }
 
 variable "env_name" {
