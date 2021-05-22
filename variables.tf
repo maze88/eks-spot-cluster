@@ -14,13 +14,13 @@ variable "region" {
 variable "project_name" {
   description = "The name of the project."
   type        = string
-  default     = "demo"
+  default     = "mz-demo"
 }
 
 variable "env_name" {
-  description = "The name of the environment."
+  description = "The name of the environment, will be used in tags."
   type        = string
-  default     = "demo"
+  default     = "testing"
 }
 
 # vpc
