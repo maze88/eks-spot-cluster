@@ -20,8 +20,4 @@ module "eks" {
       asg_min_size            = var.asg_min_size
     }
   ]
-
-  tags = {
-    "Env" = var.env_name
-  }
 }

@@ -12,13 +12,13 @@ variable "region" {
 }
 
 variable "project_name" {
-  description = "The name of the project."
+  description = "The name of the project, will be used in resource naming."
   type        = string
   default     = "demo"
 }
 
 variable "env_name" {
-  description = "The name of the environment."
+  description = "The name of the environment, will be used in tags."
   type        = string
   default     = "demo"
 }

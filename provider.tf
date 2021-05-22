@@ -3,9 +3,15 @@ terraform {
 }
 
 provider "aws" {
-  version = ">= 2.28.1"
+  version = ">= 3.38.0"
   profile = var.profile
   region  = var.region
+  default_tags {
+    tags = {
+      Environment = var.env_name
+    }
+  }
+
 }
 
 data "aws_eks_cluster" "cluster" {
