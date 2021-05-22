@@ -20,7 +20,7 @@ variable "project_name" {
 variable "env_name" {
   description = "The name of the environment, will be used in tags."
   type        = string
-  default     = "testing"
+  default     = "demo"
 }
 
 # vpc

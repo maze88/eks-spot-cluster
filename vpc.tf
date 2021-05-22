@@ -12,9 +12,5 @@ module "vpc" {
   private_subnets      = var.private_subnets
   enable_dns_hostnames = true
   #enable_dns_support   = true
-
   public_subnet_tags  = { "kubernetes.io/cluster/${var.project_name}" = "shared" }
-  tags = {
-    "Env" = var.env_name
-  }
 }
