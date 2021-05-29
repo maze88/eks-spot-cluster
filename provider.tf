@@ -11,7 +11,6 @@ provider "aws" {
       Environment = var.env_name
     }
   }
-
 }
 
 data "aws_eks_cluster" "cluster" {
