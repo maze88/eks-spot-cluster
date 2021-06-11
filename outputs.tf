@@ -37,3 +37,8 @@ output "kubeconfig_filename" {
   description = "The filename of the generated kubectl config."
   value       = module.eks.kubeconfig_filename
 }
+
+output "oidc_provider_url" {
+  description = "The URL of the OIDC provider created for the EKS cluster. Used later for IAM role's assume-role-policy."
+  value       = aws_iam_openid_connect_provider.cluster.url
+}
